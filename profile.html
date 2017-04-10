@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="20">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <script src="js/profile.js"></script>
+    <style type="text/css">
+    </style>
+    <title>个人主页</title>
+</head>
+<body>
+    <div id="main" data-role="page" data-theme="b">
+        <!--<a href="profile.html?Id=b1dQTGx2dFBRbEZEMVV6VGpqWnZqM09zVDJJWQ==">测试地址</a>-->
+        <div class="ui-bar-b" style="height: 20px"></div>
+        <div  id="me" class="ui-content" style="height: 80px;overflow: hidden">
+            <table style="width:100%;">
+                <tr>
+                    <td  rowspan="3" style="height: 80px;width: 80px">
+                        <img style="height: 80px;width: 80px;box-shadow: 1px 1px 1px black" id="avatar">
+                    </td>
+                    <td id="nickName">&nbsp;</td>
+                    <td rowspan="3" style="width: 40px">
+                        <img style="width: 32px;height: 32px" id="sexPic">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" >&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+        <div class="ui-bar-b" style="height: 20px;margin-top: 10px"></div>
+        <!--<div class="ui-content">-->
+            <!--<ul data-role="listview">-->
+                <!--<li><a href="#pop1" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">我的训练课程</a></li>-->
+                <!--<li><a href="#pop2" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">好友圈</a></li>-->
+                <!--<li><a href="#pop3" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">健身小Tips</a></li>-->
+                <!--<li><a href="#pop4" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">身体状态</a></li>-->
+            <!--</ul>-->
+            <!--<div data-role="popup" id="pop1"><p>正在开发，敬请期待！</p></div>-->
+            <!--<div data-role="popup" id="pop2"><p>正在开发，敬请期待！</p></div>-->
+            <!--<div data-role="popup" id="pop3"><p>正在开发，敬请期待！</p></div>-->
+            <!--<div data-role="popup" id="pop4"><p>正在开发，敬请期待！</p></div>-->
+        <!--</div>-->
+        <div class="ui-content" style="height: 420px;overflow: hidden">
+            <script type="text/javascript">
+                $(function () {
+                    var wid = window.innerWidth*0.9;
+                    $("#bg").css({"width":wid+"px"});
+                })
+            </script>
+            <img id="bg" src="src/bg3.png"/>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a id="urltoday" href="JavaScript:void(0);" onclick="window.location.href='today.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">今日成绩</a></li>
+                    <li><a id="urlrank" href="JavaScript:void(0);" onclick="window.location.href='rankList.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">排行榜</a></li>
+                    <li><a id="urlhostory" href="JavaScript:void(0);" onclick="window.location.href='history.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">历史记录</a></li>
+                    <li><a id="urlme" href="JavaScript:void(0);" onclick="window.location.href='profile.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">我</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

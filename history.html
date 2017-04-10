@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><title></title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="20">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/weekData.js"></script>
+    <script src="js/dayData.js"></script>
+    <script src="js/monthData.js"></script>
+    <script src="js/allData.js"></script>
+</head>
+<body>
+<div data-role="page" data-theme="b">
+    <div class="ui-content" role="main">
+        <div data-role="tabs" id="tabs">
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="#PageDay"  data-theme="b">日</a></li>
+                    <li><a href="#PageWeek"  data-theme="b">周</a></li>
+                    <li><a href="#PageMonth"  data-theme="b">月</a></li>
+                    <li><a href="#PageAll"  data-theme="b">总</a></li>
+                </ul>
+            </div>
+            <div id="PageDay" class="ui-body-d">
+                <div id="trainChart"  style="height: 300px;width:100%"></div>
+                <div  class="ui-bar" style="margin-top: -35px;height:10px">
+                    <img src="src/angle.png" style="width: 10px;height: 10px;margin-left: 48%;"/>
+                </div>
+                 <div id="DayBox" style="width: 80%;margin: 0 auto;"></div>
+            </div>
+
+            <div id="PageWeek" class="ui-body-d">
+                <div id="trainChart2"  style="height: 300px;"></div>
+                <div  class="ui-bar" style="margin-top: -35px;height:10px">
+                    <img src="src/angle.png" style="width: 10px;height: 10px;margin-left: 48%;"/>
+                </div>
+                <div id="DayBox2" style="width: 80%;margin: 0 auto;"></div>
+            </div>
+
+            <div id="PageMonth" class="ui-body-d">
+                <div id="trainChart3"  style="height: 300px;width:100%"></div>
+                <div  class="ui-bar" style="margin-top: -35px;height:10px">
+                    <img src="src/angle.png" style="width: 10px;height: 10px;margin-left: 48%;"/>
+                </div>
+                <div id="DayBox3" style="width: 80%;margin: 0 auto;"></div>
+            </div>
+            <div id="PageAll" class="ui-body-d">
+                <div id="trainChart4" style="margin-top:10px;height: 300px;width:100%"></div>
+                <div id="DataBox" style="width: 80%;margin: 0 auto;">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a id="urltoday" href="JavaScript:void(0);" onclick="window.location.href='today.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">今日成绩</a></li>
+                <li><a id="urlrank" href="JavaScript:void(0);" onclick="window.location.href='rankList.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">排行榜</a></li>
+                <li><a id="urlhostory" href="JavaScript:void(0);" onclick="window.location.href='history.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">历史记录</a></li>
+                <li><a id="urlme" href="JavaScript:void(0);" onclick="window.location.href='profile.html'" target="_blank" data-transition="flow" class="ui-btn ui-conner-all ui-shadow ui-btn-inline">我</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
