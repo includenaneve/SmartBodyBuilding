@@ -47,6 +47,7 @@ $(function () {
             var option = {
                 xAxis: {
                     data: xAxisData,
+                    type:"category",
                     axisLabel: {
                         textStyle: {
                             color: "#ffffff"

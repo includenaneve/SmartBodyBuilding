@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="20">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
@@ -55,7 +54,31 @@
                     $("#bg").css({"width":wid+"px"});
                 })
             </script>
-            <img id="bg" src="src/bg3.png"/>
+            <table style="width: 100%;font-size: 20px;text-align: center">
+                <tr style="height: 50px;line-height: 50px">
+                    <td style="text-align: left;width: 120px">身高</td>
+                    <td id="height">
+                    </td>
+                </tr>
+                <tr style="height: 50px;line-height: 50px">
+                    <td style="text-align: left;width: 120px">年龄</td>
+                    <td id="age">
+                    </td>
+                </tr>
+                <tr style="height: 50px;line-height: 50px">
+                    <td style="text-align: left;width: 120px">体重</td>
+                    <td id="weight">
+                    </td>
+                </tr>
+                <tr style="height: 50px;line-height: 50px">
+                    <td style="text-align: left;width: 120px">目标卡路里</td>
+                    <td id="target">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="btn"><input type="submit" value="修改信息"></td>
+                </tr>
+            </table>
         </div>
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">

@@ -19,7 +19,6 @@ $(function () {
                         }
                     }
                 }
-                console.log(arr);
                 var num;
                 for(var i=0;i<arr.length;i++)
                 {

@@ -5,7 +5,7 @@ header('Content-Type:text/event-stream');
 header('Cache-Control:no-cache');
 $lotname = $_SESSION['userId'];
 //$mysqli = new MySQLi('localhost', 'root', '', 'body_building');
-    $mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
+$mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
 $stmt = $mysqli->prepare('SELECT * FROM `userInfo`WHERE `openId`=?');
 $stmt->bind_param('s', $lotname);
@@ -19,7 +19,8 @@ while ($row = $result->fetch_assoc()) {
     $height = $row['height'];
     $weight = $row['weight'];
     $age = $row['age'];
-    $arr = array('nickName'=>$nickName,'avatar'=>$avatar,'sex'=>$sex,'height'=>$height,'weight'=>$weight,'age'=>$age);
+    $targetCalories = $row['targetCalories'];
+    $arr = array('nickName'=>$nickName,'avatar'=>$avatar,'sex'=>$sex,'height'=>$height,'weight'=>$weight,'age'=>$age,'targetCalories'=>$targetCalories);
     $i=0;
     if ($i === 0) {
         $i = 1;
