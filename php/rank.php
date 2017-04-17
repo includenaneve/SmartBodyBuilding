@@ -1,9 +1,8 @@
 <?php
-//$_SESSION['userId']="oWPLlvsHX0Hq7rIUCM-JXZ7LtW3A";
 header('Content-Type:text/event-stream');
 header('Cache-Control:no-cache');
 //$mysqli = new MySQLi('localhost', 'root', '', 'body_building');
-$mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
+$mysqli = new MySQLi('182.254.159.229', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
 $stmt = $mysqli->prepare('SELECT userInfo.nickname,userInfo.avatar,business.openId,SUM(`business`.`calorie`)AS rank FROM business JOIN userInfo ON business.openId=userInfo.openId  GROUP BY `business`.`openId` DESC');
 $stmt->execute();

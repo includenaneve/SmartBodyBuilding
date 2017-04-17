@@ -25,8 +25,8 @@ $(function () {
             var mydate = new Date(2017, 0, 1);
             var ydata = []; //纵坐标数据
             var xAxisData = []; //横坐标日期2017/1/1 - 2018/1/1
-            for (var i = 0; i < 365; i++) {
-                xAxisData[i] = [(mydate.getMonth() + 1), mydate.getDate()].join('/');
+            for (var i = 0; i < 1000; i++) {
+                xAxisData[i] = [mydate.getFullYear(),(mydate.getMonth() + 1), mydate.getDate()].join('/');
                 mydate.setDate(mydate.getDate() + 1); //日期加一天
                 ydata[i] = 5;
             }
@@ -38,6 +38,11 @@ $(function () {
                 }
             }
 
+            var theday = new Date(2017,0,1);
+            var today = new Date();
+            var leftNum = parseInt(Math.abs(today-theday) / 1000 / 60 / 60 /24)-3;
+            var rightNum = parseInt(Math.abs(today-theday) / 1000 / 60 / 60 /24)+3;
+            console.log(leftNum,rightNum);
             var myChart = echarts.init(document.getElementById('trainChart'));
             var yMax = 1000;
             var dataShadow = [];
@@ -55,7 +60,7 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 var date = new Date(value);
-                                var texts = [(date.getMonth() + 1), date.getDate()].join('/');
+                                var texts = [(date.getMonth() + 1), date.getDate()].join('/')+"\n"+date.getFullYear()+"年";
                                 initDataByValue(value);
                             }
                             else {
@@ -88,8 +93,8 @@ $(function () {
                 dataZoom: [
                     {
                         type: 'inside', //内嵌型组件
-                        startValue: 60,
-                        endValue: 66,
+                        startValue: leftNum,
+                        endValue: rightNum,
                         zoomLock: true
                     }
                 ],
@@ -136,7 +141,7 @@ $(function () {
             myChart.setOption(option);
 
             function initDataByValue(value) {
-                var val = "2017/" + value;
+                // var val = "2017/" + value;
                 //找索引
                 var currentIndex = -1;
                 for (var i = 0; i < dayDays.length; i++) {

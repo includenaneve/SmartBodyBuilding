@@ -5,7 +5,7 @@ header('Content-Type:text/event-stream');
 header('Cache-Control:no-cache');
 $lotname = $_SESSION['userId'];
 //$mysqli = new MySQLi('localhost', 'root', '', 'body_building');
-$mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
+$mysqli = new MySQLi('182.254.159.229', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
 $stmt = $mysqli->prepare('SELECT * FROM `userInfo`WHERE `openId`=?');
 $stmt->bind_param('s', $lotname);

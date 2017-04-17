@@ -1,12 +1,10 @@
 <?php
 session_start();
-//$_SESSION['userId']="oWPLlvsHX0Hq7rIUCM-JXZ7LtW3A";
 header('Content-Type:text/event-stream');
 header('Cache-Control:no-cache');
 
 $lotname = $_SESSION['userId'];
-//$mysqli = new MySQLi('localhost', 'root', '', 'body_building');
-    $mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
+    $mysqli = new MySQLi('182.254.159.229', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
 $stmt = $mysqli->prepare('SELECT SUM(`trainingDuration`)AS "trainTime",SUM(`totalWeight`)AS"totalWeight",SUM(`calorie`)AS "calorie",SUM(`times`)AS "times",AVG(`frequency`)AS "frequency",AVG(`heartRate`)AS "heartRate" FROM `business`WHERE `openId`= ?');
 $stmt->bind_param('s', $lotname);

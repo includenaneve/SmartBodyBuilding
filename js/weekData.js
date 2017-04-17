@@ -26,9 +26,35 @@ $(function () {
             var xAxisData = []; //横坐标周
             //给x轴添加数据
             for (var i = 0; i < 52; i++) {
-                xAxisData[i] = (i+1);
+                var tem = i+1;
+                if(tem<10)
+                {
+                    xAxisData[i] = "20160"+tem;
+                }
+                else
+                {
+                    xAxisData[i] = "2016"+tem;
+                }
                 ydata[i] = 5;
             }
+            xAxisData[0] = "201650";
+            xAxisData[1] = "201651";
+            xAxisData[2] = "201652";
+
+            for(var i=3;i<55;i++)
+            {
+                var tem = i - 2;
+                if(tem < 10)
+                {
+                    xAxisData[i] ="20170"+tem;
+                }
+                else
+                {
+                    xAxisData[i] = "2017"+tem;
+                }
+            }
+
+            console.log(Array.toString(xAxisData));
             //给y轴添加数据
             for(var j in dateWeek)
             {
@@ -41,7 +67,7 @@ $(function () {
                 }
             }
             var myChart = echarts.init(document.getElementById('trainChart2'));
-            var yMax = 1000;
+            var yMax = 800;
             var dataShadow = [];
             for (var i = 0; i < ydata.length; i++) {
                 dataShadow.push(yMax);
@@ -57,11 +83,10 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 initDataByValue(value);
-                                    texts= value+"周";
-
+                                    texts= "第"+parseInt(value)%100+"周"+"\n"+parseInt(parseInt(value)/100)+"年";
                             }
                             else {
-                                    texts= value+"周"
+                                    texts= parseInt(value) %100;
                             }
                             return texts;
                         },

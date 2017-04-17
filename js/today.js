@@ -1,6 +1,5 @@
 
 function initDataByValue(isValue) {
-    if (isValue) {
         $("#dataBox").empty();
         for (var i = 0; i < 4; i++) {
             var $div = $("<div></div>");
@@ -43,13 +42,20 @@ function initDataByValue(isValue) {
             $h5.append($h1);
             $("#dataBox").append($div);
         }
-    }
-    else {
-        $("#dataBox").empty();
-    }
 }
 $(function () {
     $("#main").ready(function () {
+        var max = 500;
+        $.ajax({
+            type:"get",
+            url: "php/profile.php",
+            dataType:"text",
+            async:false,
+            data:{Id:1}
+        }).success(function (msg) {
+            var arr = msg.split('\n');
+             max = parseInt($.parseJSON(arr[0]).targetCalories);
+        });
         $.ajax({
             type: "post",
             url: "php/today.php",
@@ -60,114 +66,127 @@ $(function () {
             var currentTime= new Date();
             var currentday = [currentTime.getFullYear(),currentTime.getMonth()+1, currentTime.getDate()].join('/');
             var mydata;
-            var max = 1000;
-            for(var i=0;i<arr.length;i++)
+            // console.log(msg == "");
+            if(msg == "")
             {
 
-                if(($.parseJSON(arr[i]).days) == currentday)
-                {
-                    mydata = arr[i];
+                $p = $("<h3>今天还您没运动<br/><br/>快开始您的健身之旅吧</h3>");
+                $("#dataBox").empty();
+                $("#mychart").empty();
+                $("#dataBox").append($p);
 
-                }
             }
-            var myChart = echarts.init(document.getElementById('mychart'));
-            var data=$.parseJSON(mydata).calorie;
-            var labelTop = {//上层样式
-                normal : {
-                    color :'#42ff0a',
-                    label : {
-                        show : true,
-                        position : 'center',
-                        // formatter : function (){return (data/max)*100 + '%'},
-                        textStyle: {
-                            color:'white',
-                            align :'center',
-                            baseline : 'top',//垂直对其方式
-                            fontSize: '20',
-                            fontWeight: 'bold'
-                        },
-                    },
-                    emphasis:{
-                        color :'#f8ffff',
+            else
+            {
+                for(var i=0;i<arr.length;i++)
+                {
+
+                    if(($.parseJSON(arr[i]).days) == currentday)
+                    {
+                        mydata = arr[i];
+                    }
+                }
+                var myChart = echarts.init(document.getElementById('mychart'));
+                var data=$.parseJSON(mydata).calorie;
+                var labelTop = {//上层样式
+                    normal : {
+                        color :'#42ff0a',
                         label : {
                             show : true,
                             position : 'center',
-                            // formatter : function (){return data + ' kcal'},
+                            // formatter : function (){return (data/max)*100 + '%'},
                             textStyle: {
                                 color:'white',
                                 align :'center',
                                 baseline : 'top',//垂直对其方式
                                 fontSize: '20',
                                 fontWeight: 'bold'
-                            }
+                            },
                         },
-                    }
-
-                }
-            };
-            var labelFromatter = {//环内样式
-                normal : {//默认样式
-                    formatter : function (){return parseInt(data/max*100) + '%'},
-                    textStyle: {//标签文本样式
-                        color:'white',
-                        align :'center',
-                        baseline : 'top',//垂直对其方式
-                        fontSize: '20',
-                        fontWeight: 'bold'
-
-                    }
-                },
-                emphasis:{
-                    formatter : function (){return data + ' kcal'},
-                    textStyle: {//标签文本样式
-                        color:'white',
-                        align :'center',
-                        baseline : 'top',//垂直对其方式
-                        fontSize: '20',
-                        fontWeight: 'bold'
+                        emphasis:{
+                            color :'#f8ffff',
+                            label : {
+                                show : true,
+                                position : 'center',
+                                // formatter : function (){return data + ' kcal'},
+                                textStyle: {
+                                    color:'white',
+                                    align :'center',
+                                    baseline : 'top',//垂直对其方式
+                                    fontSize: '20',
+                                    fontWeight: 'bold'
+                                }
+                            },
+                        }
 
                     }
-                }
-            };
-            var labelBottom = {//底层样式
-                normal : {
-                    color: '#717171',
-                    label : {
-                        show : true,
-                        position : 'center',
-                        formatter:'已消耗卡路里'
+                };
+                var labelFromatter = {//环内样式
+                    normal : {//默认样式
+                        formatter : function (){return parseInt(data/max*100) + '%'},
+                        textStyle: {//标签文本样式
+                            color:'white',
+                            align :'center',
+                            baseline : 'top',//垂直对其方式
+                            fontSize: '20',
+                            fontWeight: 'bold'
+
+                        }
                     },
-                    labelLine : {
-                        show : false
-                    }
-                }
-            };
+                    emphasis:{
+                        formatter : function (){return data + ' kcal'},
+                        textStyle: {//标签文本样式
+                            color:'white',
+                            align :'center',
+                            baseline : 'top',//垂直对其方式
+                            fontSize: '20',
+                            fontWeight: 'bold'
 
-            var option = {
-                animation:true,
-                tooltip : {
-                    trigger: 'axis',
-                    showDelay: 0,
-                    hideDelay: 50,
-                    transitionDuration:0,
-                    borderRadius : 8,
-                    borderWidth: 2,
-                    padding: 10,
-                },
-                label :labelFromatter,
-                series: [
-                    {
-                        type:'pie',
-                        radius: ['50%', '70%'],
-                        data:[
-                            {value:max-data, name:'消耗卡路里',itemStyle:labelBottom},
-                            {value:data, name:'',itemStyle:labelTop},
-                        ]
+                        }
                     }
-                ]
-            };
-            myChart.setOption(option);
-            initDataByValue(mydata);
+                };
+                var labelBottom = {//底层样式
+                    normal : {
+                        color: '#717171',
+                        label : {
+                            show : true,
+                            position : 'center',
+                            formatter:'已消耗卡路里'
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    }
+                };
+
+                var option = {
+                    animation:true,
+                    tooltip : {
+                        trigger: 'axis',
+                        showDelay: 0,
+                        hideDelay: 50,
+                        transitionDuration:0,
+                        borderRadius : 8,
+                        borderWidth: 2,
+                        padding: 10,
+                    },
+                    label :labelFromatter,
+                    series: [
+                        {
+                            type:'pie',
+                            radius: ['50%', '70%'],
+
+                            data:[
+                                {value:data>max?0:max-data, name:'消耗卡路里',itemStyle:labelBottom},
+                                {value:data, name:'',itemStyle:labelTop},
+                            ]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                initDataByValue(mydata);
+
+            }
 
         });
 

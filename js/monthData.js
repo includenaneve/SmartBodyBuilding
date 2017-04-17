@@ -56,10 +56,10 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 initDataByValue(value);
-                                texts=value+"月";
+                                texts=value+"月\n2017年";
                             }
                             else {
-                                texts = value + "月";
+                                texts = value;
                             }
                             return texts;
                         },

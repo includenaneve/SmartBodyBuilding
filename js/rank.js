@@ -11,7 +11,7 @@ $(function () {
                 {
                     for(var j = 0;j<arr.length;j++)
                     {
-                        if($.parseJSON(arr[i]).calorie > $.parseJSON(arr[j]).calorie)
+                        if(parseInt($.parseJSON(arr[i]).calorie) > parseInt($.parseJSON(arr[j]).calorie))
                         {
                             var temp = arr[i];
                             arr[i] = arr[j];
@@ -19,6 +19,7 @@ $(function () {
                         }
                     }
                 }
+                console.log(arr);
                 var num;
                 for(var i=0;i<arr.length;i++)
                 {

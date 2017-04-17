@@ -6,7 +6,7 @@ $age = $_GET['age'];
 $weight = $_GET['weight'];
 $target = $_GET['target'];
 
-$mysqli = new MySQLi('localhost', 'root', 'sdjzu123', 'body_building');
+$mysqli = new MySQLi('182.254.159.229', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
 
 $stmt = $mysqli->prepare('UPDATE `userInfo` SET `height`=?,`weight`=?,`age`=?,`targetCalories`=? WHERE `openId` =?');
