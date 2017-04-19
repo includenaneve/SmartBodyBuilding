@@ -17,6 +17,12 @@ $(function () {
             allData[3] = $.parseJSON(arrAll[0]).totalWeight; //总重量
             allData[4] = parseInt($.parseJSON(arrAll[0]).heartRate);
             allData[5] = parseInt($.parseJSON(arrAll[0]).frequency);
+            maxCalorie = parseInt(allData[0])+200;
+            maxTrainTime = parseInt(allData[1])+200;
+            maxTimes = parseInt(allData[2])+200;
+            maxTotalWeight = parseInt(allData[3])+200;
+            maxHeartRate = 150;
+            maxFrequency = 100;
             //创建图表
             var myChart = echarts.init(document.getElementById('trainChart4'));
 
@@ -27,12 +33,12 @@ $(function () {
                 tooltip: {},
                 radar: {
                     indicator: [
-                        {name: '总卡路里', max: 5000},
-                        {name: '总训练时长', max: 5000},
-                        {name: '总次数', max: 5000},
-                        {name: '总重量', max: 5000},
-                        {name: '平均心率', max: 200},
-                        {name: '平均频率', max: 200}
+                        {name: '总卡路里', max: maxCalorie},
+                        {name: '总训练时长', max: maxTrainTime},
+                        {name: '总次数', max: maxTimes},
+                        {name: '总重量', max: maxTotalWeight},
+                        {name: '平均心率', max: maxHeartRate},
+                        {name: '平均频率', max: maxFrequency}
                     ]
                 },
                 series: [{

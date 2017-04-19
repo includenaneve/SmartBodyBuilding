@@ -24,23 +24,17 @@ $(function () {
             }
             var ydata = []; //纵坐标数据
             var xAxisData = []; //横坐标周
+            var theday = new Date(2017,0,1);
+            var today = new Date();
+            var dayNum = Math.ceil(Math.abs(today-theday) / 1000 / 60 / 60 /24/7);
+
+            var leftNum = dayNum-1;
+            var rightNum = dayNum+5;
+            console.log(leftNum,rightNum,dayNum);
             //给x轴添加数据
-            for (var i = 0; i < 52; i++) {
-                var tem = i+1;
-                if(tem<10)
-                {
-                    xAxisData[i] = "20160"+tem;
-                }
-                else
-                {
-                    xAxisData[i] = "2016"+tem;
-                }
-                ydata[i] = 5;
-            }
             xAxisData[0] = "201650";
             xAxisData[1] = "201651";
             xAxisData[2] = "201652";
-
             for(var i=3;i<55;i++)
             {
                 var tem = i - 2;
@@ -52,9 +46,22 @@ $(function () {
                 {
                     xAxisData[i] = "2017"+tem;
                 }
+                ydata[i] = 0;
+            }
+            for(var i=55;i<85;i++)
+            {
+                var tem = i-54;
+                if(tem < 10)
+                {
+                    xAxisData[i] ="20180"+tem;
+                }
+                else
+                {
+                    xAxisData[i] = "2018"+tem;
+                }
+                ydata[i] = 0;
             }
 
-            console.log(Array.toString(xAxisData));
             //给y轴添加数据
             for(var j in dateWeek)
             {
@@ -83,7 +90,7 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 initDataByValue(value);
-                                    texts= "第"+parseInt(value)%100+"周"+"\n"+parseInt(parseInt(value)/100)+"年";
+                                    texts= "第"+parseInt(value)%100+"周"+"\n\n"+parseInt(parseInt(value)/100)+"年";
                             }
                             else {
                                     texts= parseInt(value) %100;
@@ -115,8 +122,8 @@ $(function () {
                 dataZoom: [
                     {
                         type: 'inside', //内嵌型组件
-                        startValue: 0,
-                        endValue: 6,
+                        startValue: leftNum,
+                        endValue: rightNum,
                         zoomLock: true
                     }
                 ],

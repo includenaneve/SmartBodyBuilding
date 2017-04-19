@@ -25,10 +25,51 @@ $(function () {
             var ydata = []; //纵坐标数据
             var xAxisData = []; //横坐标周
             //给x轴添加数据
-            for (var i = 0; i < 12; i++) {
-                xAxisData[i] = i+1;
-                ydata[i] = 5;
+            xAxisData[0] = "201601";
+            xAxisData[1] = "201602";
+            xAxisData[2] = "201603";
+            ydata[0] = 0;
+            ydata[1] = 0;
+            ydata[2] = 0;
+            for (var i = 3; i < 15; i++) {
+                var tem = i-2;
+                if(tem < 10)
+                {
+                    xAxisData[i] = "20170"+tem;
+                }
+                else
+                {
+                    xAxisData[i] = "2017"+tem;
+                }
+                ydata[i] = 0;
             }
+            for (var i = 15; i < 27; i++) {
+                var tem = i-14;
+                if(tem < 10)
+                {
+                    xAxisData[i] = "20180"+tem;
+                }
+                else
+                {
+                    xAxisData[i] = "2018"+tem;
+                }
+                ydata[i] = 0;
+            }
+            var today = new Date();
+            var leftNum;
+            var rightNum
+            if(today.getFullYear() == 2017)
+            {
+                 leftNum = today.getMonth();
+                 rightNum = today.getMonth()+6;
+            }
+            else if(today.getFullYear() == 2018)
+            {
+                leftNum = today.getMonth()+12;
+                rightNum = today.getMonth()+18;
+            }
+
+
             //给y轴添加数据
             for(var j in dateMonth)
             {
@@ -41,7 +82,7 @@ $(function () {
                 }
             }
             var myChart = echarts.init(document.getElementById('trainChart3'));
-            var yMax = 1000;
+            var yMax = 800;
             var dataShadow = [];
             for (var i = 0; i < ydata.length; i++) {
                 dataShadow.push(yMax);
@@ -56,10 +97,10 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 initDataByValue(value);
-                                texts=value+"月\n2017年";
+                                texts=parseInt(value)%100+"月"+"\n\n"+parseInt(parseInt(value)/100)+"年";
                             }
                             else {
-                                texts = value;
+                                texts = parseInt(value)%100+"月";
                             }
                             return texts;
                         },
@@ -87,8 +128,8 @@ $(function () {
                 dataZoom: [
                     {
                         type: 'inside', //内嵌型组件
-                        startValue: 0,
-                        endValue: 6,
+                        startValue: leftNum,
+                        endValue: rightNum,
                         zoomLock: true
                     }
                 ],

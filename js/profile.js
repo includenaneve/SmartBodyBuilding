@@ -108,10 +108,17 @@ $(function () {
                                 target:mytarget
                             }
                         }).success(function (msg) {
+                            $heightInput.val(null);
+                            $ageInput.val(null);
+                            $weightInput.val(null);
+                            $targetInput.val(null);
                             if(msg == 1)
                             {
-                                alert("保存成功！");
-                                window.location.href = "profile.html";
+                                if(confirm("你确认保存:\n"+"身高: "+myheight+"\n年龄: "+myage+"\n体重："+myweight+"\n目标卡路里："+mytarget))
+                                {
+                                    alert("保存成功！");
+                                    window.location.href = "profile.html";
+                                }
                             }
                             else
                             {
@@ -131,12 +138,6 @@ $(function () {
             })
 
         });
-
-        $("#save").click(function () {
-            alert("click Yes");
-
-
-        })
 
 
     })

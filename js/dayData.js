@@ -25,10 +25,10 @@ $(function () {
             var mydate = new Date(2017, 0, 1);
             var ydata = []; //纵坐标数据
             var xAxisData = []; //横坐标日期2017/1/1 - 2018/1/1
-            for (var i = 0; i < 1000; i++) {
+            for (var i = 0; i < 500; i++) {
                 xAxisData[i] = [mydate.getFullYear(),(mydate.getMonth() + 1), mydate.getDate()].join('/');
                 mydate.setDate(mydate.getDate() + 1); //日期加一天
-                ydata[i] = 5;
+                ydata[i] = 0;
             }
             for (var j in dayDays) {
                 for (var i in xAxisData) {
@@ -42,9 +42,8 @@ $(function () {
             var today = new Date();
             var leftNum = parseInt(Math.abs(today-theday) / 1000 / 60 / 60 /24)-3;
             var rightNum = parseInt(Math.abs(today-theday) / 1000 / 60 / 60 /24)+3;
-            console.log(leftNum,rightNum);
             var myChart = echarts.init(document.getElementById('trainChart'));
-            var yMax = 1000;
+            var yMax = 800;
             var dataShadow = [];
             for (var i = 0; i < ydata.length; i++) {
                 dataShadow.push(yMax);
@@ -60,7 +59,7 @@ $(function () {
                         formatter: function (value, index) {
                             if (index == 3) {
                                 var date = new Date(value);
-                                var texts = [(date.getMonth() + 1), date.getDate()].join('/')+"\n"+date.getFullYear()+"年";
+                                var texts = [(date.getMonth() + 1), date.getDate()].join('/')+"\n\n"+date.getFullYear()+"年";
                                 initDataByValue(value);
                             }
                             else {

@@ -7,7 +7,7 @@ header('Cache-Control:no-cache');
 $lotname = $_SESSION['userId'];
 $mysqli = new MySQLi('182.254.159.229', 'root', 'sdjzu123', 'body_building');
 $mysqli->set_charset('utf8');
-$stmt = $mysqli->prepare('SELECT DATE_FORMAT(startingTime,\'%c\') months,SUM(`trainingDuration`)AS "trainTime",SUM(`totalWeight`)AS"totalWeight",SUM(`calorie`)AS "calorie",SUM(`times`)AS "times"FROM `business` WHERE `openId`= ? GROUP BY months');
+$stmt = $mysqli->prepare('SELECT DATE_FORMAT(startingTime,\'%Y%m\') months,SUM(`trainingDuration`)AS "trainTime",SUM(`totalWeight`)AS"totalWeight",SUM(`calorie`)AS "calorie",SUM(`times`)AS "times"FROM `business` WHERE `openId`= ? GROUP BY months');
 $stmt->bind_param('s', $lotname);
 $stmt->execute();
 $result = $stmt->get_result();

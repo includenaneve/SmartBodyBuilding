@@ -66,26 +66,33 @@ $(function () {
             var currentTime= new Date();
             var currentday = [currentTime.getFullYear(),currentTime.getMonth()+1, currentTime.getDate()].join('/');
             var mydata;
-            // console.log(msg == "");
+
             if(msg == "")
             {
-
-                $p = $("<h3>今天还您没运动<br/><br/>快开始您的健身之旅吧</h3>");
+                $p = $("<h3>今天您还没运动<br/><br/>快开始您的健身之旅吧</h3>");
                 $("#dataBox").empty();
                 $("#mychart").empty();
                 $("#dataBox").append($p);
-
             }
             else
             {
                 for(var i=0;i<arr.length;i++)
                 {
-
                     if(($.parseJSON(arr[i]).days) == currentday)
                     {
                         mydata = arr[i];
                     }
                 }
+            }
+            if(mydata == null)
+            {
+                $p = $("<h3>今天您还没运动<br/><br/>快开始您的健身之旅吧</h3>");
+                $("#dataBox").empty();
+                $("#mychart").empty();
+                $("#dataBox").append($p);
+            }
+            else
+            {
                 var myChart = echarts.init(document.getElementById('mychart'));
                 var data=$.parseJSON(mydata).calorie;
                 var labelTop = {//上层样式
