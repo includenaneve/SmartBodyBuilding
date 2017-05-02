@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-mobile/1.4.5/jquery.mobile.min.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="js/profile.js"></script>
-    <style type="text/css">
-    </style>
+    <link rel="stylesheet" href="loading/loading.css">
+    <script src="loading/loading.js"></script>
+    <script type="text/javascript">
+        $('#urlhostory').click(function(){
+            console.log("click");
+            var load = new Loading();
+            load.init();
+            load.start();
+            setTimeout(function() {
+                load.stop();
+            }, 3000)
+        });
+    </script>
     <title>个人主页</title>
 </head>
 <body>
@@ -35,18 +46,6 @@
             </table>
         </div>
         <div class="ui-bar-b" style="height: 20px;margin-top: 10px"></div>
-        <!--<div class="ui-content">-->
-            <!--<ul data-role="listview">-->
-                <!--<li><a href="#pop1" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">我的训练课程</a></li>-->
-                <!--<li><a href="#pop2" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">好友圈</a></li>-->
-                <!--<li><a href="#pop3" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">健身小Tips</a></li>-->
-                <!--<li><a href="#pop4" data-rel="popup" class="ui-btn  ui-shadow ui-btn-inline" data-transition="pop" style="text-align: center">身体状态</a></li>-->
-            <!--</ul>-->
-            <!--<div data-role="popup" id="pop1"><p>正在开发，敬请期待！</p></div>-->
-            <!--<div data-role="popup" id="pop2"><p>正在开发，敬请期待！</p></div>-->
-            <!--<div data-role="popup" id="pop3"><p>正在开发，敬请期待！</p></div>-->
-            <!--<div data-role="popup" id="pop4"><p>正在开发，敬请期待！</p></div>-->
-        <!--</div>-->
         <div class="ui-content" style="height: 420px;overflow: hidden">
             <script type="text/javascript">
                 $(function () {
@@ -91,6 +90,39 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        $('#urlhostory').click(function(){
+            var load = new Loading();
+            load.init();
+            load.start();
+            setTimeout(function() {
+                load.stop();
+            }, 3000)
+        });
+        $('#urlrank').click(function(){
+            var load = new Loading();
+            load.init();
+            load.start();
+            setTimeout(function() {
+                load.stop();
+            }, 500)
+        });
+        $('#urlme').click(function(){
+            var load = new Loading();
+            load.init();
+            load.start();
+            setTimeout(function() {
+                load.stop();
+            }, 500)
+        });
+        $('#urltoday').click(function(){
+            var load = new Loading();
+            load.init();
+            load.start();
+            setTimeout(function() {
+                load.stop();
+            }, 2000)
+        });
+    </script>
 </body>
 </html>
